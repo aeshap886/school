@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+    <h2>Student Registration</h2>
+
+    <form th:action="@{/register}" th:object="${student}" method="post">
+        <label>Username:</label>
+        <input type="text" th:field="*{username}" /><br/>
+
+        <label>Full Name:</label>
+        <input type="text" th:field="*{fullName}" /><br/>
+
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" /><br/>
+
+        <label>Password:</label> 
+        <input type="password" th:field="*{password}" /><br/>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p th:if="${param.success}">Registered successfully!</p>
+    <script th:if="${param.success}">
+    setTimeout(function(){
+    	window.location.href='/login';
+    },10000);
+    </script>
+</body>
+</html>

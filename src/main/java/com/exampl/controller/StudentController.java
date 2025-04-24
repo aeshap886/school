@@ -38,7 +38,7 @@ public class StudentController {
         studentRepository.save(student);
         return "redirect:/login";
     }
-
+    
     @GetMapping("/login")
     public String showLoginForm() {
         return "login";

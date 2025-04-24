@@ -5,9 +5,10 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "admin")
 public class Admin {
 	
-
+	
     public Long getId() {
 		return id;
 	}
@@ -48,14 +49,23 @@ public class Admin {
 		this.password = password;
 	}
 
-	public Admin(Long id, String username, String fullName, String email, String password) {
+	
+	  public String getRole() {
+	        return role;
+	    }
+
+	    public void setRole(String role) {
+	        this.role = role;
+	    }
+	    
+	public Admin(String username, String fullName, String email, String password, String role) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.fullName = fullName;
 		this.email = email;
 		this.password = password;
-	}
+		this.role = role;
+		}
 
 	public Admin() {
 		super();
@@ -77,7 +87,10 @@ public class Admin {
 
     @Column(nullable = false)
     private String password;
-
+    
+    @Column(nullable = false)
+    private String role;
+    
     @Override
     public String toString() {
         return "Admin{" +
@@ -101,4 +114,8 @@ public class Admin {
     public int hashCode() {
         return Objects.hash(id, username);
     }
+
+	
+
+	
 }
